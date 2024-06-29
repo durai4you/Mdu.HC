@@ -46,6 +46,10 @@
     <Compile Include="DataAccess\ConnectionAccess.cs" />
     <Compile Include="DataAccess\ClubMemberAccess.cs" />
     <Compile Include="DataAccess\IClubMemberAccess.cs" />
+    <Compile Include="Enums\CaseDocAllotedBy.cs" />
+    <Compile Include="Enums\CaseDocAllotedTo.cs" />
+    <Compile Include="Enums\CaseStatus.cs" />
+    <Compile Include="Enums\CaseType.cs" />
     <Compile Include="Sql\Scripts.cs" />
     <Compile Include="DataModel\ClubMemberModel.cs" />
     <Compile Include="Enums\HealthStatus.cs" />

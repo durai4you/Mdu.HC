@@ -11,6 +11,55 @@ namespace Mdu.HC.Data.Sql
     /// </summary>
     public static class Scripts
     {
+
+        /// <summary>
+        /// sql to insert a Case details
+        /// </summary>
+        public static readonly string SqlInsertCaseDetails = "Insert Into" +
+            " DocManager(CaseID,CaseType,CaseCatogory,RackID,CaseStatus,CounterFiled,CaseDocLocation,CaseDocAllottedTo,CaseDocAllottedBy,CaseDocAllottedToName,CaseDocAllottedByName,DateCreated,DateUpdated,CreatedUser,LastModifiedUser,DisposedRacKNum,DisposedBundleNum)" +
+            " Values(@CaseID, @CaseType, @CaseCatogory, @RackID, @CaseStatus, @CounterFiled, @CaseDocLocation, @CaseDocAllottedTo, @CaseDocAllottedBy, @CaseDocAllottedToName, @CaseDocAllottedByName, @DateCreated, @DateUpdated, @CreatedUser, @LastModifiedUser, @DisposedRacKNum, @DisposedBundleNum)";
+
+        /// <summary>
+        /// Sql to get a case details by Id
+        /// </summary>
+        public static readonly string sqlGetCaseDetailsbyCaseId = "Select" +
+            " CaseID,CaseType,CaseCatogory,RackID,CaseStatus,CounterFiled,CaseDocLocation,CaseDocAllottedTo,CaseDocAllottedBy,CaseDocAllottedToName,CaseDocAllottedByName,DateCreated,DateUpdated,CreatedUser,LastModifiedUser,DisposedRacKNum,DisposedBundleNum" +
+            " From DocManager Where CaseID = @CaseID";
+
+        /// <summary>
+        /// sql to update case details
+        /// </summary>
+        public static readonly string sqlUpdateCaseDetails = "Update DocManager " +
+            " Set [CaseType] = @CaseType, [CaseCatogory] = @CaseCatogory, [RackID] = @RackID, [CaseStatus] = @CaseStatus, " +
+            " [CounterFiled] = @CounterFiled, [CaseDocLocation] = @CaseDocLocation, [CaseDocAllottedTo] = @CaseDocAllottedTo, " +
+            " [CaseDocAllottedBy] = @CaseDocAllottedBy, [CaseDocAllottedToName] = @CaseDocAllottedToName, [CaseDocAllottedByName] = @CaseDocAllottedByName, " +
+            " [DateCreated] = @DateCreated, [DateUpdated] = @DateUpdated, [CreatedUser] = @CreatedUser, " +
+            " [LastModifiedUser] = @LastModifiedUser, [DisposedRacKNum] = @DisposedRacKNum, [DisposedBundleNum] = @DisposedBundleNum, " +
+            " Where ([Id] = @Id)";
+
+
+        /// <summary>
+        /// Sql to get all all case details
+        /// </summary>
+        public static readonly string SqlGetAllCaseDetails = "Select" +
+            " CaseID,CaseType,CaseCatogory,RackID,CaseStatus,CounterFiled,CaseDocLocation,CaseDocAllottedTo,CaseDocAllottedBy,CaseDocAllottedToName,CaseDocAllottedByName,DateCreated,DateUpdated,CreatedUser,LastModifiedUser,DisposedRacKNum,DisposedBundleNum" +
+            " From DocManager";
+
+
+        /// <summary>
+        /// sql to search for Case details
+        /// </summary>
+        public static readonly string SqlSearchCaseDetails = "Select " +
+            " CaseID,CaseType,CaseCatogory,RackID,CaseStatus,CounterFiled,CaseDocLocation,CaseDocAllottedTo,CaseDocAllottedBy,CaseDocAllottedToName,CaseDocAllottedByName,DateCreated,DateUpdated,CreatedUser,LastModifiedUser,DisposedRacKNum,DisposedBundleNum" +
+            " From DocManager Where (@CaseType Is NULL OR @CaseType = CaseType) {0}" +
+            " (@CaseDocLocation Is NULL OR @CaseDocLocation = CaseDocLocation)";
+
+
+        /// <summary>
+        /// sql to delete a Case detail record
+        /// </summary>
+        public static readonly string sqlDeleteCaseDetails = "Delete From DocManager Where (CaseID = @CaseID)";
+
         /// <summary>
         /// Sql to get a club member details by Id
         /// </summary>

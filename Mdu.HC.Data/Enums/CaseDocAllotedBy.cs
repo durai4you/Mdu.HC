@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-// <copyright file="Occupation.cs" company="John">
+// <copyright file="HealthStatus.cs" company="John">
 // Socia Member club Demo ©2013
 // </copyright>
 // -----------------------------------------------------------------------
@@ -9,26 +9,26 @@ namespace Mdu.HC.Data.Enum
     using System.ComponentModel;
 
     /// <summary>
-    /// Enumerator for occupation
+    /// Enumerator for Case Doc Allotted By
     /// </summary>
-    public enum Occupation
+    public enum CaseDocAllottedBy
     {
         /// <summary>
-        /// Occupation - Doctor
+        /// CaseDocAllottedBy - Recorded Incharge
         /// </summary>
-        [Description("Doctor")]
-        Doctor = 1,
+        [Description("Recorded Incharge")]
+        RecordedIncharge = 1,
 
         /// <summary>
-        /// Occupation - Engineer
+        /// CaseDocAllottedBy - Recorded Clerk
         /// </summary>
-        [Description("Engineer")]
-        Engineer,
+        [Description("Recorded Clerk")]
+        RecordedClerk,
 
         /// <summary>
-        /// Occupation - Professor
+        /// CaseDocAllottedBy - Office Assistant
         /// </summary>
-        [Description("Professor")]
-        Professor,
+        [Description("Office Assistant")]
+        OfficeAssistant
     }
 }

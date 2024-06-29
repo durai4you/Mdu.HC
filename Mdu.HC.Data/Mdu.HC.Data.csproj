@@ -41,11 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessService\CaseDetailsService.cs" />
     <Compile Include="BusinessService\ClubMemberService.cs" />
+    <Compile Include="BusinessService\ICaseDetailsService.cs" />
     <Compile Include="BusinessService\IClubMemberService.cs" />
+    <Compile Include="DataAccess\CaseDetailsAccess.cs" />
     <Compile Include="DataAccess\ConnectionAccess.cs" />
     <Compile Include="DataAccess\ClubMemberAccess.cs" />
+    <Compile Include="DataAccess\ICaseDetailsAccess.cs" />
     <Compile Include="DataAccess\IClubMemberAccess.cs" />
+    <Compile Include="DataModel\CaseDetailsModel.cs" />
     <Compile Include="Enums\CaseDocAllotedBy.cs" />
     <Compile Include="Enums\CaseDocAllotedTo.cs" />
     <Compile Include="Enums\CaseStatus.cs" />

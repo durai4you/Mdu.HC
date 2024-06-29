@@ -214,6 +214,15 @@ namespace Mdu.HC.Desktop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select a Case Type - must not be empty.
+        /// </summary>
+        internal static string Registration_CaseType_Select_Text {
+            get {
+                return ResourceManager.GetString("Registration_CaseType_Select_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No. of children.
         /// </summary>
         internal static string Registration_Children_Label_Text {

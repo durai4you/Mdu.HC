@@ -16,8 +16,11 @@ namespace Mdu.HC.Data.Sql
         /// sql to insert a Case details
         /// </summary>
         public static readonly string SqlInsertCaseDetails = "Insert Into" +
-            " DocManager(CaseID,CaseType,CaseCatogory,RackID,CaseStatus,CounterFiled,CaseDocLocation,CaseDocAllottedTo,CaseDocAllottedBy,CaseDocAllottedToName,CaseDocAllottedByName,DateCreated,DateUpdated,CreatedUser,LastModifiedUser,DisposedRacKNum,DisposedBundleNum)" +
-            " Values(@CaseID, @CaseType, @CaseCatogory, @RackID, @CaseStatus, @CounterFiled, @CaseDocLocation, @CaseDocAllottedTo, @CaseDocAllottedBy, @CaseDocAllottedToName, @CaseDocAllottedByName, @DateCreated, @DateUpdated, @CreatedUser, @LastModifiedUser, @DisposedRacKNum, @DisposedBundleNum)";
+            " DocManager(CaseID,CaseType,RackID,CaseDocLocation,DateCreated,  CreatedUser)" +
+            " Values(@CaseID, @CaseType, @RackID, @CaseDocLocation, @DateCreated,  @CreatedUser)";
+
+            //" DocManager(CaseID,CaseType,CaseCatogory,RackID,CaseStatus,CounterFiled,CaseDocLocation,CaseDocAllottedTo,CaseDocAllottedBy,CaseDocAllottedToName,CaseDocAllottedByName,DateCreated,DateUpdated,CreatedUser,LastModifiedUser,DisposedRacKNum,DisposedBundleNum)" +
+            //" Values(@CaseID, @CaseType, @CaseCatogory, @RackID, @CaseStatus, @CounterFiled, @CaseDocLocation, @CaseDocAllottedTo, @CaseDocAllottedBy, @CaseDocAllottedToName, @CaseDocAllottedByName, @DateCreated, @DateUpdated, @CreatedUser, @LastModifiedUser, @DisposedRacKNum, @DisposedBundleNum)";
 
         /// <summary>
         /// Sql to get a case details by Id

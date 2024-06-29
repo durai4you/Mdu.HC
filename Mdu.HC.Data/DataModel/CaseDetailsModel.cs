@@ -37,7 +37,7 @@ namespace Mdu.HC.Data.DataModel
         /// <summary
         /// Gets or sets member CaseStatus
         /// </summary>
-        public Boolean CaseStatus { get; set; }
+        public CaseDocLocation CaseStatus { get; set; }
 
         /// <summary
         /// Gets or sets member CounterFiled

@@ -168,6 +168,9 @@
   <data name="Registration_CaseType_Label_Text1" xml:space="preserve">
     <value>Case Type</value>
   </data>
+  <data name="Registration_CaseType_Select_Text" xml:space="preserve">
+    <value>Please select a Case Type - must not be empty</value>
+  </data>
   <data name="Registration_Children_Label_Text" xml:space="preserve">
     <value>No. of children</value>
   </data>

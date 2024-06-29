@@ -119,9 +119,13 @@ namespace Mdu.HC.Data.DataAccess
                 oleDbCommand.CommandType = CommandType.Text;
                 oleDbCommand.CommandText = Scripts.SqlInsertCaseDetails;
 
-                // Add the input parameters to the parameter collection
-                //oleDbCommand.Parameters.AddWithValue("@Name", CaseDetail.Name);
-                //oleDbCommand.Parameters.AddWithValue("@DateOfBirth", CaseDetail.DateOfBirth.ToShortDateString());
+               // Add the input parameters to the parameter collection
+                oleDbCommand.Parameters.AddWithValue("@CaseID", CaseDetail.CaseID);
+                oleDbCommand.Parameters.AddWithValue("@CaseType", CaseDetail.CaseType);
+                oleDbCommand.Parameters.AddWithValue("@RackID", CaseDetail.RackID);
+                oleDbCommand.Parameters.AddWithValue("@CaseDocLocation", CaseDetail.CaseDocLocation);                
+                oleDbCommand.Parameters.AddWithValue("@DateCreated", CaseDetail.DateCreated.ToShortDateString());
+                oleDbCommand.Parameters.AddWithValue("@CreatedUser", CaseDetail.CreatedUser);
                 //oleDbCommand.Parameters.AddWithValue("@Occupation", (int)CaseDetail.Occupation);
                 //oleDbCommand.Parameters.AddWithValue("@MaritalStatus", (int)CaseDetail.MaritalStatus);
                 //oleDbCommand.Parameters.AddWithValue("@HealthStatus", (int)CaseDetail.HealthStatus);

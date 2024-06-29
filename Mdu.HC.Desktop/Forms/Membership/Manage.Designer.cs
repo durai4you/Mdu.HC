@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab = new System.Windows.Forms.TabControl();
             this.tabRegistration = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -41,7 +41,7 @@
             this.txtRackNumber = new System.Windows.Forms.TextBox();
             this.cmbCaseStatus = new System.Windows.Forms.ComboBox();
             this.lblCaseStatus = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtCaseCreated = new System.Windows.Forms.DateTimePicker();
             this.btnRegisterCaseDetail = new System.Windows.Forms.Button();
             this.cmbCaseType = new System.Windows.Forms.ComboBox();
             this.lblCaseType = new System.Windows.Forms.Label();
@@ -166,7 +166,7 @@
             this.tabControl2.Location = new System.Drawing.Point(8, 6);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(567, 272);
+            this.tabControl2.Size = new System.Drawing.Size(567, 445);
             this.tabControl2.TabIndex = 5;
             // 
             // tabRegister
@@ -179,7 +179,7 @@
             this.tabRegister.Controls.Add(this.txtRackNumber);
             this.tabRegister.Controls.Add(this.cmbCaseStatus);
             this.tabRegister.Controls.Add(this.lblCaseStatus);
-            this.tabRegister.Controls.Add(this.dateTimePicker1);
+            this.tabRegister.Controls.Add(this.dtCaseCreated);
             this.tabRegister.Controls.Add(this.btnRegisterCaseDetail);
             this.tabRegister.Controls.Add(this.cmbCaseType);
             this.tabRegister.Controls.Add(this.lblCaseType);
@@ -190,7 +190,7 @@
             this.tabRegister.Location = new System.Drawing.Point(4, 25);
             this.tabRegister.Name = "tabRegister";
             this.tabRegister.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRegister.Size = new System.Drawing.Size(559, 243);
+            this.tabRegister.Size = new System.Drawing.Size(559, 416);
             this.tabRegister.TabIndex = 0;
             this.tabRegister.Text = "Member";
             this.tabRegister.UseVisualStyleBackColor = true;
@@ -244,18 +244,18 @@
             this.lblRackNumber.AutoSize = true;
             this.lblRackNumber.Location = new System.Drawing.Point(6, 132);
             this.lblRackNumber.Name = "lblRackNumber";
-            this.lblRackNumber.Size = new System.Drawing.Size(86, 15);
+            this.lblRackNumber.Size = new System.Drawing.Size(83, 15);
             this.lblRackNumber.TabIndex = 37;
-            this.lblRackNumber.Text = "No. of children";
+            this.lblRackNumber.Text = "Rack Number";
             this.lblRackNumber.Click += new System.EventHandler(this.lblRackNumber_Click);
             // 
             // txtRackNumber
             // 
             this.txtRackNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRackNumber.Location = new System.Drawing.Point(108, 130);
+            this.txtRackNumber.Location = new System.Drawing.Point(106, 130);
             this.txtRackNumber.MaxLength = 2;
             this.txtRackNumber.Name = "txtRackNumber";
-            this.txtRackNumber.Size = new System.Drawing.Size(53, 21);
+            this.txtRackNumber.Size = new System.Drawing.Size(232, 21);
             this.txtRackNumber.TabIndex = 33;
             this.txtRackNumber.TextChanged += new System.EventHandler(this.txtRackNumber_TextChanged);
             // 
@@ -265,7 +265,7 @@
             this.cmbCaseStatus.FormattingEnabled = true;
             this.cmbCaseStatus.Location = new System.Drawing.Point(106, 94);
             this.cmbCaseStatus.Name = "cmbCaseStatus";
-            this.cmbCaseStatus.Size = new System.Drawing.Size(152, 23);
+            this.cmbCaseStatus.Size = new System.Drawing.Size(234, 23);
             this.cmbCaseStatus.TabIndex = 32;
             // 
             // lblCaseStatus
@@ -277,23 +277,23 @@
             this.lblCaseStatus.TabIndex = 35;
             this.lblCaseStatus.Text = "Case Status";
             // 
-            // dateTimePicker1
+            // dtCaseCreated
             // 
-            this.dateTimePicker1.AllowDrop = true;
-            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(111, 386);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2012, 12, 25, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(1910, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(152, 21);
-            this.dateTimePicker1.TabIndex = 26;
-            this.dateTimePicker1.Value = new System.DateTime(2012, 12, 25, 0, 0, 0, 0);
+            this.dtCaseCreated.AllowDrop = true;
+            this.dtCaseCreated.CustomFormat = "dd/MM/yyyy";
+            this.dtCaseCreated.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtCaseCreated.Location = new System.Drawing.Point(121, 386);
+            this.dtCaseCreated.MaxDate = new System.DateTime(2012, 12, 25, 0, 0, 0, 0);
+            this.dtCaseCreated.MinDate = new System.DateTime(1910, 1, 1, 0, 0, 0, 0);
+            this.dtCaseCreated.Name = "dtCaseCreated";
+            this.dtCaseCreated.Size = new System.Drawing.Size(217, 21);
+            this.dtCaseCreated.TabIndex = 26;
+            this.dtCaseCreated.Value = new System.DateTime(2012, 12, 25, 0, 0, 0, 0);
             // 
             // btnRegisterCaseDetail
             // 
             this.btnRegisterCaseDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegisterCaseDetail.Location = new System.Drawing.Point(143, 178);
+            this.btnRegisterCaseDetail.Location = new System.Drawing.Point(227, 182);
             this.btnRegisterCaseDetail.Name = "btnRegisterCaseDetail";
             this.btnRegisterCaseDetail.Size = new System.Drawing.Size(115, 48);
             this.btnRegisterCaseDetail.TabIndex = 34;
@@ -307,7 +307,7 @@
             this.cmbCaseType.FormattingEnabled = true;
             this.cmbCaseType.Location = new System.Drawing.Point(108, 54);
             this.cmbCaseType.Name = "cmbCaseType";
-            this.cmbCaseType.Size = new System.Drawing.Size(152, 23);
+            this.cmbCaseType.Size = new System.Drawing.Size(234, 23);
             this.cmbCaseType.TabIndex = 31;
             // 
             // lblCaseType
@@ -324,7 +324,7 @@
             this.txtCaseID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCaseID.Location = new System.Drawing.Point(108, 13);
             this.txtCaseID.Name = "txtCaseID";
-            this.txtCaseID.Size = new System.Drawing.Size(152, 21);
+            this.txtCaseID.Size = new System.Drawing.Size(234, 21);
             this.txtCaseID.TabIndex = 25;
             // 
             // lblCaseRegDate
@@ -931,14 +931,14 @@
             this.dataGridViewMembers.AllowUserToAddRows = false;
             this.dataGridViewMembers.AllowUserToOrderColumns = true;
             this.dataGridViewMembers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMembers.Location = new System.Drawing.Point(3, 166);
             this.dataGridViewMembers.Name = "dataGridViewMembers";
@@ -1068,7 +1068,7 @@
         private System.Windows.Forms.TextBox txtRackNumber;
         private System.Windows.Forms.ComboBox cmbCaseStatus;
         private System.Windows.Forms.Label lblCaseStatus;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtCaseCreated;
         private System.Windows.Forms.Button btnRegisterCaseDetail;
         private System.Windows.Forms.ComboBox cmbCaseType;
         private System.Windows.Forms.Label lblCaseType;

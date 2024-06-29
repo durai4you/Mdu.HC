@@ -15,8 +15,7 @@ namespace Mdu.HC.Desktop.Forms.Membership
     using Mdu.HC.Data.DataModel;
     using Mdu.HC.Data.Enum;
     using Mdu.HC.Desktop.Properties;
-
-    /// <summary>
+        /// <summary>
     /// Manage screen - To view, search, print, export club members information
     /// </summary>
     public partial class Manage : Form
@@ -30,6 +29,8 @@ namespace Mdu.HC.Desktop.Forms.Membership
         /// Interface of ClubMemberService
         /// </summary>
         private IClubMemberService clubMemberService;
+
+        private ICaseDetailsService caseDetalsService;
 
         /// <summary>
         /// Variable to store error message
@@ -50,7 +51,8 @@ namespace Mdu.HC.Desktop.Forms.Membership
             this.InitializeResourceString();
             this.InitializeDropDownList();
             this.InitilizeDataGridViewStyle();
-            this.clubMemberService = new ClubMemberService();            
+            this.clubMemberService = new ClubMemberService();
+            this.caseDetalsService = new CaseDetailsService();
             this.ResetRegistration();
             this.ResetSearch();
         }
@@ -94,6 +96,9 @@ namespace Mdu.HC.Desktop.Forms.Membership
         /// </summary>
         private void InitializeDropDownList()
         {
+            cmbCaseType.DataSource = Enum.GetValues(typeof(CaseType));
+            cmbCaseStatus.DataSource = Enum.GetValues(typeof(CaseDocLocation));
+
             cmbOccupation.DataSource = Enum.GetValues(typeof(Occupation));
             cmbMaritalStatus.DataSource = Enum.GetValues(typeof(MaritalStatus));
             cmbHealthStatus.DataSource = Enum.GetValues(typeof(HealthStatus));            
@@ -118,6 +123,13 @@ namespace Mdu.HC.Desktop.Forms.Membership
         /// </summary>
         private void ResetRegistration()
         {
+
+            txtCaseID.Text = string.Empty;
+            txtRackNumber.Text = string.Empty;
+            
+            cmbCaseStatus.SelectedIndex = -1;
+            cmbCaseType.SelectedIndex = -1;
+            
             txtName.Text = string.Empty;
             txtSalary.Text = string.Empty;
             txtNoOfChildren.Text = string.Empty;
@@ -148,6 +160,8 @@ namespace Mdu.HC.Desktop.Forms.Membership
             cmb2HealthStatus.SelectedIndex = -1;
             cmb2MaritalStatus.SelectedIndex = -1;
         }
+
+
 
         /// <summary>
         /// Validates registration input
@@ -180,6 +194,28 @@ namespace Mdu.HC.Desktop.Forms.Membership
             return this.errorMessage != string.Empty ? false : true;
         }
 
+
+        private bool ValidateCaseDetailRegistration()
+        {
+            this.errorMessage = string.Empty;
+
+            if (txtCaseID.Text.Trim() == string.Empty)
+            {
+                this.AddErrorMessage(Resources.Registration_CaseID_Required_Text1);
+            }
+
+            if (cmbCaseType.SelectedIndex == -1)
+            {
+                this.AddErrorMessage(Resources.Registration_CaseType_Select_Text);
+            }
+
+            if (cmbCaseStatus.SelectedIndex == -1)
+            {
+                this.AddErrorMessage(Resources.Registration_CaseStatus_Select_Text1);
+            }
+
+            return this.errorMessage != string.Empty ? false : true;
+        }
         /// <summary>
         /// Validates update data
         /// </summary>
@@ -409,7 +445,8 @@ namespace Mdu.HC.Desktop.Forms.Membership
             {
                 if (tab.SelectedIndex == 1)
                 {
-                    DataTable data = this.clubMemberService.GetAllClubMembers();
+                    //DataTable data = this.clubMemberService.GetAllClubMembers();
+                    DataTable data = this.caseDetalsService.GetAllCaseDetails();
                     this.InitializeUpdate();
                     this.LoadDataGridView(data);                    
                 }
@@ -429,35 +466,35 @@ namespace Mdu.HC.Desktop.Forms.Membership
         {
             try
             {
-                if (e.ColumnIndex == 2)
-                {
-                    e.Value = string.Format("{0:dd/MM/yyyy}", (DateTime)e.Value);
-                }
+                //if (e.ColumnIndex == 2)
+                //{
+                //    e.Value = string.Format("{0:dd/MM/yyyy}", (DateTime)e.Value);
+                //}
 
-                if (e.ColumnIndex == 3)
-                {
-                    e.Value = Enum.GetName(typeof(Occupation), e.Value).ToString();
-                }
+                //if (e.ColumnIndex == 3)
+                //{
+                //    e.Value = Enum.GetName(typeof(Occupation), e.Value).ToString();
+                //}
 
-                if (e.ColumnIndex == 4)
-                {
-                    e.Value = Enum.GetName(typeof(MaritalStatus), e.Value).ToString();
-                }
+                //if (e.ColumnIndex == 4)
+                //{
+                //    e.Value = Enum.GetName(typeof(MaritalStatus), e.Value).ToString();
+                //}
 
-                if (e.ColumnIndex == 5)
-                {
-                    e.Value = Enum.GetName(typeof(HealthStatus), e.Value).ToString();
-                }
+                //if (e.ColumnIndex == 5)
+                //{
+                //    e.Value = Enum.GetName(typeof(HealthStatus), e.Value).ToString();
+                //}
 
-                if (e.ColumnIndex == 6)
-                {
-                    e.Value = Convert.ToDecimal(e.Value) == 0 ? string.Empty : e.Value;
-                }
+                //if (e.ColumnIndex == 6)
+                //{
+                //    e.Value = Convert.ToDecimal(e.Value) == 0 ? string.Empty : e.Value;
+                //}
 
-                if (e.ColumnIndex == 7)
-                {
-                    e.Value = Convert.ToInt16(e.Value) == 0 ? string.Empty : e.Value;
-                }
+                //if (e.ColumnIndex == 7)
+                //{
+                //    e.Value = Convert.ToInt16(e.Value) == 0 ? string.Empty : e.Value;
+                //}
             }
             catch (Exception ex)
             {
@@ -759,6 +796,63 @@ namespace Mdu.HC.Desktop.Forms.Membership
         private void btnRegisterCaseDetail_Click(object sender, EventArgs e)
         {
 
+            try
+            {
+                // Check if the validation passes
+                if (this.ValidateCaseDetailRegistration())
+                {
+                    //dtCaseCreated.Value = System.DateTime.Now;
+                    // Assign the values to the model
+                    CaseDetailsModel caseDetailsModel = new CaseDetailsModel()
+                    {
+                        CaseID = txtCaseID.Text.Trim(),
+                        CaseDocLocation = (CaseDocLocation)cmbCaseStatus.SelectedValue,
+                        CaseType = (CaseType)cmbCaseType.SelectedValue,
+                        RackID = Convert.ToInt32(txtRackNumber.Text.Trim()),
+                        DateCreated = System.DateTime.Now,
+                        CreatedUser = Settings.Default.Username
+                    };
+
+                    // Call the service method and assign the return status to variable
+                    var success = this.caseDetalsService.RegisterCaseDetails(caseDetailsModel);
+
+                    // if status of success variable is true then display a information else display the error message
+                    if (success)
+                    {
+                        // display the message box
+                        MessageBox.Show(
+                            Resources.Registration_Successful_Message,
+                            Resources.Registration_Successful_Message_Title,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        // Reset the screen
+                        this.ResetRegistration();
+                    }
+                    else
+                    {
+                        // display the error messge
+                        MessageBox.Show(
+                            Resources.Registration_Error_Message,
+                            Resources.Registration_Error_Message_Title,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    // Display the validation failed message
+                    MessageBox.Show(
+                        this.errorMessage,
+                        Resources.Registration_Error_Message_Title,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.ShowErrorMessage(ex);
+            }
         }
 
         private void txtRackNumber_TextChanged(object sender, EventArgs e)

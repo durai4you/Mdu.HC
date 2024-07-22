@@ -412,7 +412,7 @@ namespace Mdu.HC.Desktop.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Social Member Club - Members.
+        ///   Looks up a localized string similar to Madurai Document Manager - Case Details.
         /// </summary>
         internal static string Report_Header {
             get {

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tab = new System.Windows.Forms.TabControl();
             this.tabRegistration = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -125,6 +125,8 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtCaseIDSearch = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.cmbOperand = new System.Windows.Forms.ComboBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -135,8 +137,6 @@
             this.dataGridViewMembers = new System.Windows.Forms.DataGridView();
             this.Header = new System.Windows.Forms.TextBox();
             this.PrintReport = new System.Drawing.Printing.PrintDocument();
-            this.txtCaseIDSearch = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
             this.tab.SuspendLayout();
             this.tabRegistration.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -1240,6 +1240,23 @@
             this.tabPage3.Text = "Search";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // txtCaseIDSearch
+            // 
+            this.txtCaseIDSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCaseIDSearch.Location = new System.Drawing.Point(83, 34);
+            this.txtCaseIDSearch.Name = "txtCaseIDSearch";
+            this.txtCaseIDSearch.Size = new System.Drawing.Size(234, 21);
+            this.txtCaseIDSearch.TabIndex = 46;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(12, 37);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(50, 15);
+            this.label32.TabIndex = 45;
+            this.label32.Text = "Case ID";
+            // 
             // cmbOperand
             // 
             this.cmbOperand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1318,14 +1335,14 @@
             this.dataGridViewMembers.AllowUserToAddRows = false;
             this.dataGridViewMembers.AllowUserToOrderColumns = true;
             this.dataGridViewMembers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMembers.Location = new System.Drawing.Point(3, 166);
             this.dataGridViewMembers.Name = "dataGridViewMembers";
@@ -1354,23 +1371,6 @@
             // PrintReport
             // 
             this.PrintReport.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocument_PrintPage);
-            // 
-            // txtCaseIDSearch
-            // 
-            this.txtCaseIDSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCaseIDSearch.Location = new System.Drawing.Point(83, 34);
-            this.txtCaseIDSearch.Name = "txtCaseIDSearch";
-            this.txtCaseIDSearch.Size = new System.Drawing.Size(234, 21);
-            this.txtCaseIDSearch.TabIndex = 46;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(12, 37);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(50, 15);
-            this.label32.TabIndex = 45;
-            this.label32.Text = "Case ID";
             // 
             // Manage
             // 

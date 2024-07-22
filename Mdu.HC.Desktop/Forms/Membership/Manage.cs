@@ -705,26 +705,53 @@ namespace Mdu.HC.Desktop.Forms.Membership
                     foreach (DataColumn col in table.Columns)
                     {
                         columnIndex++;
-                        if (columnIndex == 4 || columnIndex == 5 || columnIndex == 6)
+                        if (columnIndex == 2 || columnIndex == 9 || columnIndex == 7 || columnIndex == 8)
                         {
-                            if (columnIndex == 4)
+                            if (columnIndex == 2)
                             {
                                 excel.Cells[rowIndex + 1, columnIndex]
-                                    = Enum.GetName(typeof(Occupation), row[col.ColumnName]);
+                                    = Enum.GetName(typeof(CaseType), row[col.ColumnName]);
                             }
 
-                            if (columnIndex == 5)
+                            if (columnIndex == 7)
                             {
                                 excel.Cells[rowIndex + 1, columnIndex]
-                                    = Enum.GetName(typeof(MaritalStatus), row[col.ColumnName]);
+                                    = Enum.GetName(typeof(CaseDocLocation), row[col.ColumnName]);
                             }
 
-                            if (columnIndex == 6)
+                            if (columnIndex == 8)
                             {
                                 excel.Cells[rowIndex + 1, columnIndex]
-                                    = Enum.GetName(typeof(HealthStatus), row[col.ColumnName]);
+                                    = Enum.GetName(typeof(CaseDocAllottedTo), row[col.ColumnName]);
+                            }
+
+                            if (columnIndex == 9)
+                            {
+                                excel.Cells[rowIndex + 1, columnIndex]
+                                    = Enum.GetName(typeof(CaseDocAllottedBy), row[col.ColumnName]);
                             }
                         }
+
+                        //if (columnIndex == 4 || columnIndex == 5 || columnIndex == 6)
+                        //{
+                        //    if (columnIndex == 4)
+                        //    {
+                        //        excel.Cells[rowIndex + 1, columnIndex]
+                        //            = Enum.GetName(typeof(Occupation), row[col.ColumnName]);
+                        //    }
+
+                        //    if (columnIndex == 5)
+                        //    {
+                        //        excel.Cells[rowIndex + 1, columnIndex]
+                        //            = Enum.GetName(typeof(MaritalStatus), row[col.ColumnName]);
+                        //    }
+
+                        //    if (columnIndex == 6)
+                        //    {
+                        //        excel.Cells[rowIndex + 1, columnIndex]
+                        //            = Enum.GetName(typeof(HealthStatus), row[col.ColumnName]);
+                        //    }
+                        //}
                         else
                         {
                             excel.Cells[rowIndex + 1, columnIndex] = row[col.ColumnName].ToString();
@@ -744,17 +771,17 @@ namespace Mdu.HC.Desktop.Forms.Membership
 
         private void dataGridViewMembers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int currentRow = dataGridViewMembers.SelectedCells[0].RowIndex;
-            MessageBox.Show("cell content click");
-            try
-            {
-                string clubMemberId = dataGridViewMembers[0, currentRow].Value.ToString();
-                memberId = int.Parse(clubMemberId);
-            }
-            catch (Exception ex)
-            {
+            //int currentRow = dataGridViewMembers.SelectedCells[0].RowIndex;
+            //MessageBox.Show("cell content click");
+            //try
+            //{
+            //    string clubMemberId = dataGridViewMembers[0, currentRow].Value.ToString();
+            //    memberId = int.Parse(clubMemberId);
+            //}
+            //catch (Exception ex)
+            //{
                 
-            }
+            //}
         }
        
         /// <summary>

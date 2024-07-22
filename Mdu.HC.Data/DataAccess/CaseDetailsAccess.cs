@@ -148,27 +148,31 @@ namespace Mdu.HC.Data.DataAccess
         /// <returns>true / false</returns>
         public bool UpdateCaseDetails(CaseDetailsModel CaseDetail)
         {
-            using (OleDbCommand dbCommand = new OleDbCommand())
+            using (OleDbCommand oleDbCommand = new OleDbCommand())
             {
                 // Set the command object properties
-                dbCommand.Connection = new OleDbConnection(this.ConnectionString);
-                dbCommand.CommandType = CommandType.Text;
-                dbCommand.CommandText = Scripts.sqlUpdateCaseDetails;
+                oleDbCommand.Connection = new OleDbConnection(this.ConnectionString);
+                oleDbCommand.CommandType = CommandType.Text;
+                oleDbCommand.CommandText = Scripts.sqlUpdateCaseDetails;
 
-                // Add the input parameters to the parameter collection
-                //dbCommand.Parameters.AddWithValue("@Name", CaseDetail.Name);
-                //dbCommand.Parameters.AddWithValue("@DateOfBirth", CaseDetail.DateOfBirth.ToShortDateString());
-                //dbCommand.Parameters.AddWithValue("@Occupation", (int)CaseDetail.Occupation);
-                //dbCommand.Parameters.AddWithValue("@MaritalStatus", (int)CaseDetail.MaritalStatus);
-                //dbCommand.Parameters.AddWithValue("@HealthStatus", (int)CaseDetail.HealthStatus);
-                //dbCommand.Parameters.AddWithValue("@Salary", CaseDetail.Salary);
-                //dbCommand.Parameters.AddWithValue("@NumberOfChildren", CaseDetail.NumberOfChildren);
-                //dbCommand.Parameters.AddWithValue("@Id", CaseDetail.Id);
+               // Add the input parameters to the parameter collection                
+                oleDbCommand.Parameters.AddWithValue("@CaseType", CaseDetail.CaseType);
+                oleDbCommand.Parameters.AddWithValue("@RackID", CaseDetail.RackID);
+                oleDbCommand.Parameters.AddWithValue("@CaseDocLocation", CaseDetail.CaseDocLocation);
+                oleDbCommand.Parameters.AddWithValue("@CaseDocAllottedTo", CaseDetail.CaseDocAllottedTo);
+                oleDbCommand.Parameters.AddWithValue("@CaseDocAllottedBy", CaseDetail.CaseDocAllottedBy);
+                oleDbCommand.Parameters.AddWithValue("@CaseDocAllottedToName", CaseDetail.CaseDocAllottedToName);
+                oleDbCommand.Parameters.AddWithValue("@CaseDocAllottedByName", CaseDetail.CaseDocAllottedByName);
+                oleDbCommand.Parameters.AddWithValue("@DateUpdated", CaseDetail.DateUpdated.ToShortDateString());
+                oleDbCommand.Parameters.AddWithValue("@LastModifiedUser", CaseDetail.LastModifiedUser);
+                oleDbCommand.Parameters.AddWithValue("@DisposedRacKNum", CaseDetail.DisposedRacKNum);
+                oleDbCommand.Parameters.AddWithValue("@DisposedBundleNum", CaseDetail.DisposedBundleNum);
+                oleDbCommand.Parameters.AddWithValue("@CaseID", CaseDetail.CaseID);
 
                 // Open the connection, execute the query and close the connection
-                dbCommand.Connection.Open();
-                var rowsAffected = dbCommand.ExecuteNonQuery();
-                dbCommand.Connection.Close();
+                oleDbCommand.Connection.Open();
+                var rowsAffected = oleDbCommand.ExecuteNonQuery();
+                oleDbCommand.Connection.Close();
 
                 return rowsAffected > 0;
             }
@@ -179,7 +183,7 @@ namespace Mdu.HC.Data.DataAccess
         /// </summary>
         /// <param name="id">member id</param>
         /// <returns>true / false</returns>
-        public bool DeleteCaseDetails(int caseId)
+        public bool DeleteCaseDetails(string caseId)
         {
             using (OleDbCommand dbCommand = new OleDbCommand())
             {

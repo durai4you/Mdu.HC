@@ -185,7 +185,7 @@ namespace Mdu.HC.Data.DataAccess
                 dbCommand.CommandText = Scripts.sqlDeleteClubMember;
 
                 // Add the input parameter to the parameter collection
-                dbCommand.Parameters.AddWithValue("@Id", id);
+                dbCommand.Parameters.AddWithValue("@ID", id);
 
                 // Open the connection, execute the query and close the connection
                 dbCommand.Connection.Open();

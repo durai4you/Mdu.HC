@@ -32,14 +32,20 @@ namespace Mdu.HC.Data.Sql
         /// <summary>
         /// sql to update case details
         /// </summary>
+        //public static readonly string sqlUpdateCaseDetails = "Update DocManager " +
+        //    " Set [CaseType] = @CaseType, [CaseCatogory] = @CaseCatogory, [RackID] = @RackID, [CaseStatus] = @CaseStatus, " +
+        //    " [CounterFiled] = @CounterFiled, [CaseDocLocation] = @CaseDocLocation, [CaseDocAllottedTo] = @CaseDocAllottedTo, " +
+        //    " [CaseDocAllottedBy] = @CaseDocAllottedBy, [CaseDocAllottedToName] = @CaseDocAllottedToName, [CaseDocAllottedByName] = @CaseDocAllottedByName, " +
+        //    " [DateCreated] = @DateCreated, [DateUpdated] = @DateUpdated, [CreatedUser] = @CreatedUser, " +
+        //    " [LastModifiedUser] = @LastModifiedUser, [DisposedRacKNum] = @DisposedRacKNum, [DisposedBundleNum] = @DisposedBundleNum, " +
+        //    " Where ([Id] = @Id)";
         public static readonly string sqlUpdateCaseDetails = "Update DocManager " +
-            " Set [CaseType] = @CaseType, [CaseCatogory] = @CaseCatogory, [RackID] = @RackID, [CaseStatus] = @CaseStatus, " +
-            " [CounterFiled] = @CounterFiled, [CaseDocLocation] = @CaseDocLocation, [CaseDocAllottedTo] = @CaseDocAllottedTo, " +
-            " [CaseDocAllottedBy] = @CaseDocAllottedBy, [CaseDocAllottedToName] = @CaseDocAllottedToName, [CaseDocAllottedByName] = @CaseDocAllottedByName, " +
-            " [DateCreated] = @DateCreated, [DateUpdated] = @DateUpdated, [CreatedUser] = @CreatedUser, " +
-            " [LastModifiedUser] = @LastModifiedUser, [DisposedRacKNum] = @DisposedRacKNum, [DisposedBundleNum] = @DisposedBundleNum, " +
-            " Where ([Id] = @Id)";
-
+        " Set [CaseType] = @CaseType, [RackID] = @RackID, " +
+        " [CaseDocLocation] = @CaseDocLocation, [CaseDocAllottedTo] = @CaseDocAllottedTo, " +
+        " [CaseDocAllottedBy] = @CaseDocAllottedBy, [CaseDocAllottedToName] = @CaseDocAllottedToName, [CaseDocAllottedByName] = @CaseDocAllottedByName, " +
+        " [DateUpdated] = @DateUpdated, " +
+        " [LastModifiedUser] = @LastModifiedUser, [DisposedRacKNum] = @DisposedRacKNum, [DisposedBundleNum] = @DisposedBundleNum " +
+        " Where ([CaseID] = @CaseID)";
 
         /// <summary>
         /// Sql to get all all case details
@@ -54,8 +60,7 @@ namespace Mdu.HC.Data.Sql
         /// </summary>
         public static readonly string SqlSearchCaseDetails = "Select " +
             " CaseID,CaseType,CaseCatogory,RackID,CaseStatus,CounterFiled,CaseDocLocation,CaseDocAllottedTo,CaseDocAllottedBy,CaseDocAllottedToName,CaseDocAllottedByName,DateCreated,DateUpdated,CreatedUser,LastModifiedUser,DisposedRacKNum,DisposedBundleNum" +
-            " From DocManager Where (@CaseType Is NULL OR @CaseType = CaseType) {0}" +
-            " (@CaseDocLocation Is NULL OR @CaseDocLocation = CaseDocLocation)";
+            " From DocManager Where (@CaseID = CaseID)";
 
 
         /// <summary>

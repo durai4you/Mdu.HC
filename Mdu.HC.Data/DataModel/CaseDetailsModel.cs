@@ -92,12 +92,12 @@ namespace Mdu.HC.Data.DataModel
         /// <summary
         /// Gets or sets member DisposedRacKNum
         /// </summary>
-        public string DisposedRacKNum { get; set; }
+        public int DisposedRacKNum { get; set; }
 
         /// <summary
         /// Gets or sets member DisposedBundleNum
         /// </summary>
-        public string DisposedBundleNum { get; set; }
+        public int DisposedBundleNum { get; set; }
 
 
     }

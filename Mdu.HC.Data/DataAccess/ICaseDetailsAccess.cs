@@ -54,6 +54,6 @@ namespace Mdu.HC.Data.DataAccess
         /// </summary>
         /// <param name="id">member id</param>
         /// <returns>true / false</returns>
-        bool DeleteCaseDetails(int id);
+        bool DeleteCaseDetails(string CasaeId);
     }
 }

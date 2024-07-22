@@ -15,7 +15,7 @@ namespace Mdu.HC.Desktop.Forms.Membership
     using Mdu.HC.Data.DataModel;
     using Mdu.HC.Data.Enum;
     using Mdu.HC.Desktop.Properties;
-        /// <summary>
+    /// <summary>
     /// Manage screen - To view, search, print, export club members information
     /// </summary>
     public partial class Manage : Form
@@ -257,6 +257,46 @@ namespace Mdu.HC.Desktop.Forms.Membership
             return this.errorMessage != string.Empty ? false : true;
         }
 
+
+        private bool ValidateCaseDetailsUpdate()
+        {
+            this.errorMessage = string.Empty;
+
+            if (cmbCaseDocLocEdit.SelectedValue.Equals(CaseDocLocation.RecordSection))
+            {
+                if(txtRackNumEdit.Text.Trim() == string.Empty)
+                {
+                    this.AddErrorMessage(Resources.Registration_RackNumber_Select_Text1);
+                }
+            }
+
+            if (cmbCaseDocLocEdit.SelectedValue.Equals(CaseDocLocation.LawOfficer))
+            {
+                if (cmbDocAllotedTo.SelectedValue.Equals(CaseDocAllottedTo.None))
+                {
+                    this.AddErrorMessage("Please select valid Doc Alloted To Value");
+                }
+                else if(cmbDocAllotedBy.SelectedValue.Equals(CaseDocAllottedBy.None))
+                {
+                    this.AddErrorMessage("Please select valid Doc Alloted By Value");
+                }
+            }
+
+            if (cmbCaseDocLocEdit.SelectedValue.Equals(CaseDocLocation.DisposedRoom))
+            {
+                if (txtDisRackNumber.Text.Trim() == string.Empty)
+                {
+                    this.AddErrorMessage("Disposed Rack number must not be empty");
+                }
+                else if (txtDisBundleNum.Text.Trim() == string.Empty)
+                {
+                    this.AddErrorMessage("Disposed Bundle number must not be empty");
+                }
+            }             
+
+            return this.errorMessage != string.Empty ? false : true;
+        }
+
         /// <summary>
         /// To generate the error message
         /// </summary>
@@ -337,7 +377,7 @@ namespace Mdu.HC.Desktop.Forms.Membership
                 }
             }
 
-            this.PrintReport.DocumentName = "MembersReport";
+            this.PrintReport.DocumentName = "Case Detail Report";
             this.PrintReport.PrinterSettings = printDialog.PrinterSettings;
             this.PrintReport.DefaultPageSettings = printDialog.PrinterSettings.DefaultPageSettings;
             this.PrintReport.DefaultPageSettings.Margins = new Margins(40, 40, 40, 40);
@@ -485,6 +525,15 @@ namespace Mdu.HC.Desktop.Forms.Membership
                     e.Value = Enum.GetName(typeof(CaseDocLocation), e.Value).ToString();
                 }
 
+                if (e.ColumnIndex == 7)
+                {
+                    e.Value = Enum.GetName(typeof(CaseDocAllottedTo), e.Value).ToString();
+                }
+                if (e.ColumnIndex == 8)
+                {
+                    e.Value = Enum.GetName(typeof(CaseDocAllottedBy), e.Value).ToString();
+                }
+
                 //if (e.ColumnIndex == 2)
                 //{
                 //    e.Value = string.Format("{0:dd/MM/yyyy}", (DateTime)e.Value);
@@ -528,9 +577,10 @@ namespace Mdu.HC.Desktop.Forms.Membership
         /// <param name="e">event data</param>
         private void Search_Click(object sender, EventArgs e)
         {
+            
             try
             {
-                DataTable data = this.clubMemberService.SearchClubMembers(cmbSearchOccupation.SelectedValue, cmbSearchMaritalStatus.SelectedValue, cmbOperand.GetItemText(cmbOperand.SelectedItem));
+                DataTable data = this.caseDetalsService.SearchCaseDetails(txtCaseIDSearch.Text, cmbOperand.GetItemText(cmbOperand.SelectedItem));
                 this.LoadDataGridView(data);
             }
             catch (Exception ex)
@@ -549,7 +599,7 @@ namespace Mdu.HC.Desktop.Forms.Membership
             try
             {
                 this.ResetSearch();
-                DataTable data = this.clubMemberService.GetAllClubMembers();
+                DataTable data = this.caseDetalsService.GetAllCaseDetails();
                 this.LoadDataGridView(data); 
             }
             catch (Exception ex)
@@ -716,32 +766,37 @@ namespace Mdu.HC.Desktop.Forms.Membership
         {
             try
             {
-                if (this.ValidateUpdate())
+
+                if (this.ValidateCaseDetailsUpdate())
                 {
-                    ClubMemberModel clubMemberModel = new ClubMemberModel()
+                    CaseDetailsModel caseDetailsModel = new CaseDetailsModel()
                     {
-                        Id = this.memberId,
-                        Name = txt2Name.Text.Trim(),
-                        DateOfBirth = dt2DateOfBirth.Value,
-                        Occupation = (Occupation)cmb2Occupation.SelectedValue,
-                        HealthStatus = (HealthStatus)cmb2HealthStatus.SelectedValue,
-                        MaritalStatus = (MaritalStatus)cmb2MaritalStatus.SelectedValue,
-                        Salary = txt2Salary.Text.Trim() == string.Empty ? 0 : Convert.ToDecimal(txt2Salary.Text),
-                        NumberOfChildren = txt2NoOfChildren.Text.Trim() == string.Empty ? 0 : Convert.ToInt16(txt2NoOfChildren.Text)
+                        CaseID = this.caseId,
+                        CaseType = (CaseType)cmbCaseTypeEdit.SelectedValue,
+                        RackID = txtRackNumEdit.Text.Trim() == string.Empty ? 0 : Convert.ToInt32(txtRackNumEdit.Text),
+                        DateUpdated = System.DateTime.Now,
+                        LastModifiedUser = Settings.Default.Username,
+                        CaseDocLocation = (CaseDocLocation)cmbCaseDocLocEdit.SelectedValue,
+                        CaseDocAllottedBy = (CaseDocAllottedBy)cmbDocAllotedBy.SelectedValue,
+                        CaseDocAllottedTo = (CaseDocAllottedTo)cmbDocAllotedTo.SelectedValue,
+                        CaseDocAllottedByName = txtDocAllotedByName.Text.Trim() == string.Empty ? "" : txtDocAllotedByName.Text,
+                        CaseDocAllottedToName = txtDocAllotedToName.Text.Trim() == string.Empty ? "" : txtDocAllotedToName.Text,
+                        DisposedRacKNum = txtDisRackNumber.Text.Trim() == string.Empty ? 0 : Convert.ToInt32(txtDisRackNumber.Text),
+                        DisposedBundleNum = txtDisBundleNum.Text.Trim() == string.Empty ? 0 : Convert.ToInt32(txtDisBundleNum.Text)                        
                     };
 
-                    var flag = this.clubMemberService.UpdateClubMember(clubMemberModel);
+                    var flag = this.caseDetalsService.UpdateCaseDetails(caseDetailsModel);
 
                     if (flag)
                     {
-                        DataTable data = this.clubMemberService.GetAllClubMembers();
+                        DataTable data = this.caseDetalsService.GetAllCaseDetails();
                         this.LoadDataGridView(data);
 
                         MessageBox.Show(
                             Resources.Update_Successful_Message,
                             Resources.Update_Successful_Message_Title,
                             MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);                        
+                            MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -752,6 +807,44 @@ namespace Mdu.HC.Desktop.Forms.Membership
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
+
+
+                //if (this.ValidateUpdate())
+                //{
+                //    ClubMemberModel clubMemberModel = new ClubMemberModel()
+                //    {
+                //        Id = this.memberId,
+                //        Name = txt2Name.Text.Trim(),
+                //        DateOfBirth = dt2DateOfBirth.Value,
+                //        Occupation = (Occupation)cmb2Occupation.SelectedValue,
+                //        HealthStatus = (HealthStatus)cmb2HealthStatus.SelectedValue,
+                //        MaritalStatus = (MaritalStatus)cmb2MaritalStatus.SelectedValue,
+                //        Salary = txt2Salary.Text.Trim() == string.Empty ? 0 : Convert.ToDecimal(txt2Salary.Text),
+                //        NumberOfChildren = txt2NoOfChildren.Text.Trim() == string.Empty ? 0 : Convert.ToInt16(txt2NoOfChildren.Text)
+                //    };
+
+                //    var flag = this.clubMemberService.UpdateClubMember(clubMemberModel);
+
+                //    if (flag)
+                //    {
+                //        DataTable data = this.clubMemberService.GetAllClubMembers();
+                //        this.LoadDataGridView(data);
+
+                //        MessageBox.Show(
+                //            Resources.Update_Successful_Message,
+                //            Resources.Update_Successful_Message_Title,
+                //            MessageBoxButtons.OK,
+                //            MessageBoxIcon.Information);                        
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBox.Show(
+                //        this.errorMessage,
+                //        Resources.Registration_Error_Message_Title,
+                //        MessageBoxButtons.OK,
+                //        MessageBoxIcon.Error);
+                //}
             }
             catch (Exception ex)
             {
@@ -763,20 +856,45 @@ namespace Mdu.HC.Desktop.Forms.Membership
         {
             try
             {
-                var flag = this.clubMemberService.DeleteClubMember(this.memberId);
+               DialogResult msgRes =  MessageBox.Show(
+                       "Are you sure want to delete the case details " + this.caseId +"?",
+                       "Delete Case Details",                       
+                       MessageBoxButtons.YesNo,
+                       MessageBoxIcon.Stop);
 
-                if (flag)
+                if (msgRes == DialogResult.Yes)
                 {
-                    DataTable data = this.clubMemberService.GetAllClubMembers();
-                    this.LoadDataGridView(data);
+                    //                MessageBox.Show("Are you sure want to delet the case details!", MessageBoxButtons.YesNo);
 
-                    MessageBox.Show(
-                        Resources.Delete_Successful_Message,
-                        Resources.Delete_Successful_Message_Title,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    var flag = this.caseDetalsService.DeleteCaseDetails(this.caseId);
+
+                    if (flag)
+                    {
+                        DataTable data = this.caseDetalsService.GetAllCaseDetails();
+                        this.LoadDataGridView(data);
+
+                        MessageBox.Show(
+                            Resources.Delete_Successful_Message,
+                            Resources.Delete_Successful_Message_Title,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
                 }
-                
+
+                //var flag = this.clubMemberService.DeleteClubMember(this.memberId);
+
+                //if (flag)
+                //{
+                //    DataTable data = this.clubMemberService.GetAllClubMembers();
+                //    this.LoadDataGridView(data);
+
+                //    MessageBox.Show(
+                //        Resources.Delete_Successful_Message,
+                //        Resources.Delete_Successful_Message_Title,
+                //        MessageBoxButtons.OK,
+                //        MessageBoxIcon.Information);
+                //}
+
             }
             catch (Exception ex)
             {                
@@ -813,6 +931,21 @@ namespace Mdu.HC.Desktop.Forms.Membership
                         txtDocAllotedByName.Text = dataRow["CaseDocAllottedByName"].ToString();
                         txtDocAllotedToName.Text = dataRow["CaseDocAllottedToName"].ToString();
                     }
+                    else if ((CaseDocLocation)dataRow["CaseDocLocation"] == CaseDocLocation.DisposedRoom)
+                    {
+                        txtDisBundleNum.Enabled = true;
+                        txtDisRackNumber.Enabled = true;
+                        txtDisRackNumber.Text = dataRow["DisposedRacKNum"].ToString();
+                        txtDisBundleNum.Text = dataRow["DisposedBundleNum"].ToString();
+                        cmbDocAllotedBy.SelectedItem = CaseDocAllottedBy.None;
+                        cmbDocAllotedTo.SelectedItem = CaseDocAllottedTo.None;
+                        cmbDocAllotedBy.Enabled = false;
+                        cmbDocAllotedTo.Enabled = false;
+                        txtDocAllotedByName.Enabled = false;
+                        txtDocAllotedToName.Enabled = false;
+                        txtDocAllotedByName.Text = "";
+                        txtDocAllotedToName.Text = "";
+                    }
                     else
                     {
                         cmbDocAllotedBy.Enabled = false;
@@ -823,23 +956,8 @@ namespace Mdu.HC.Desktop.Forms.Membership
                         txtDisRackNumber.Enabled = false;
                         cmbDocAllotedBy.SelectedItem = CaseDocAllottedBy.None;
                         cmbDocAllotedTo.SelectedItem = CaseDocAllottedTo.None;
-                    }
-
-                    if ((CaseDocLocation)dataRow["CaseDocLocation"] == CaseDocLocation.DisposedRoom)
-                    {
-                        txtDisBundleNum.Enabled = true;
-                        txtDisRackNumber.Enabled = true;
-                        txtDisRackNumber.Text = dataRow["DisposedRacKNum"].ToString();
-                        txtDisBundleNum.Text = dataRow["DisposedBundleNum"].ToString();
-                        cmbDocAllotedBy.SelectedItem = CaseDocAllottedBy.None;
-                        cmbDocAllotedTo.SelectedItem = CaseDocAllottedTo.None;
-                    }
-                    else
-                    {
-                        txtDisBundleNum.Enabled = false;
-                        txtDisRackNumber.Enabled = false;
-                        cmbDocAllotedBy.SelectedItem = CaseDocAllottedBy.None;
-                        cmbDocAllotedTo.SelectedItem = CaseDocAllottedTo.None;
+                        txtDocAllotedByName.Text = "";
+                        txtDocAllotedToName.Text = "";
                     }
 
                     //txtDisRackNumber.Text = dataRow["DisposedRacKNum"].ToString();
@@ -929,12 +1047,10 @@ namespace Mdu.HC.Desktop.Forms.Membership
 
         private void txtRackNumber_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
-
         private void lblRackNumber_Click(object sender, EventArgs e)
         {
-
         }
 
         private void cmbCaseDocLocEdit_SelectedIndexChanged(object sender, EventArgs e)
@@ -974,6 +1090,26 @@ namespace Mdu.HC.Desktop.Forms.Membership
         private void Manage_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void txtRackNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            //if (System.Text.RegularExpressions.Regex.IsMatch(txtRackNumber.Text, "[^0-9]"))
+            //{
+            //    //MessageBox.Show("Please enter only numbers.");
+            //    //textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            //    e.Handled = true;
+            //}
+            //else
+            //{
+            //    e.Handled = false;
+            //}
+        }
+
+        private void txtDisBundleNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

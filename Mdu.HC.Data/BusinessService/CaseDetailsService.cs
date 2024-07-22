@@ -83,9 +83,9 @@ namespace Mdu.HC.Data.BusinessService
         /// </summary>
         /// <param name="id">member id</param>
         /// <returns>true / false</returns>
-        public bool DeleteCaseDetails(int id)
+        public bool DeleteCaseDetails(string caseId)
         {
-            return this.memberAccess.DeleteCaseDetails(id);
+            return this.memberAccess.DeleteCaseDetails(caseId);
         }
     }
 }

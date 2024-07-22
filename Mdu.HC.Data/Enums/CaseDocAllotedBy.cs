@@ -14,6 +14,11 @@ namespace Mdu.HC.Data.Enum
     public enum CaseDocAllottedBy
     {
         /// <summary>
+        /// CaseDocAllottedBy - None
+        /// </summary>
+        [Description("None")]
+        None = 0,
+        /// <summary>
         /// CaseDocAllottedBy - Recorded Incharge
         /// </summary>
         [Description("Recorded Incharge")]

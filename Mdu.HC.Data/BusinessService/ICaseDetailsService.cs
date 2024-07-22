@@ -18,7 +18,7 @@ namespace Mdu.HC.Data.BusinessService
         /// Method to get all club members
         /// </summary>
         /// <returns>Data table</returns>
-        DataRow GetCaseDetailsById(int Id);
+        DataRow GetCaseDetailsById(string Id);
 
         /// <summary>
         /// Service method to get all club members

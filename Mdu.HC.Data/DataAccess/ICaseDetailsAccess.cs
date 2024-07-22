@@ -19,7 +19,7 @@ namespace Mdu.HC.Data.DataAccess
         /// Method to get all club members
         /// </summary>
         /// <returns>Data table</returns>
-        DataRow GetCaseDetailsById(int Id);
+        DataRow GetCaseDetailsById(string caseId);
 
         /// <summary>
         /// Method to get all club members

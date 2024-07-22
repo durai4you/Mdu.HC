@@ -41,7 +41,12 @@ namespace Mdu.HC.Desktop.Forms.Membership
         /// Member id
         /// </summary>
         private int memberId;
-        
+
+        /// <summary>
+        /// Case id
+        /// </summary>
+        private string caseId;
+
         /// <summary>
         /// Initializes a new instance of the Manage class
         /// </summary>
@@ -98,6 +103,11 @@ namespace Mdu.HC.Desktop.Forms.Membership
         {
             cmbCaseType.DataSource = Enum.GetValues(typeof(CaseType));
             cmbCaseStatus.DataSource = Enum.GetValues(typeof(CaseDocLocation));
+
+            cmbCaseDocLocEdit.DataSource = Enum.GetValues(typeof(CaseDocLocation));
+            cmbDocAllotedTo.DataSource = Enum.GetValues(typeof(CaseDocAllottedTo));
+            cmbCaseTypeEdit.DataSource = Enum.GetValues(typeof(CaseType));
+            cmbDocAllotedBy.DataSource = Enum.GetValues(typeof(CaseDocAllottedBy));
 
             cmbOccupation.DataSource = Enum.GetValues(typeof(Occupation));
             cmbMaritalStatus.DataSource = Enum.GetValues(typeof(MaritalStatus));
@@ -466,6 +476,15 @@ namespace Mdu.HC.Desktop.Forms.Membership
         {
             try
             {
+                if (e.ColumnIndex == 1)
+                {
+                    e.Value = Enum.GetName(typeof(CaseType), e.Value).ToString();
+                }
+                if (e.ColumnIndex == 6)
+                {
+                    e.Value = Enum.GetName(typeof(CaseDocLocation), e.Value).ToString();
+                }
+
                 //if (e.ColumnIndex == 2)
                 //{
                 //    e.Value = string.Format("{0:dd/MM/yyyy}", (DateTime)e.Value);
@@ -773,18 +792,71 @@ namespace Mdu.HC.Desktop.Forms.Membership
             {
                 if (dgv.SelectedRows.Count > 0)
                 {
-                    string clubMemberId = dgv.SelectedRows[0].Cells[0].Value.ToString();
-                    memberId = int.Parse(clubMemberId);
 
-                    DataRow dataRow = this.clubMemberService.GetClubMemberById(memberId);
+                    caseId = dgv.SelectedRows[0].Cells[0].Value.ToString();
 
-                    txt2Name.Text = dataRow["Name"].ToString();
-                    dt2DateOfBirth.Value = Convert.ToDateTime(dataRow["DateOfBirth"]);
-                    cmb2Occupation.SelectedItem = (Occupation)dataRow["Occupation"];
-                    cmb2MaritalStatus.SelectedItem = (MaritalStatus)dataRow["MaritalStatus"];
-                    cmb2HealthStatus.SelectedItem = (HealthStatus)dataRow["HealthStatus"];
-                    txt2Salary.Text = dataRow["Salary"].ToString() == "0.0000" ? string.Empty : dataRow["Salary"].ToString();
-                    txt2NoOfChildren.Text = dataRow["NumberOfChildren"].ToString();
+                    DataRow dataRow = this.caseDetalsService.GetCaseDetailsById(caseId);
+
+                    txtCaseIDEdit.Text = dataRow["CaseID"].ToString();
+                    cmbCaseTypeEdit.SelectedItem = (CaseType)dataRow["CaseType"];
+                    cmbCaseDocLocEdit.SelectedItem = (CaseDocLocation)dataRow["CaseDocLocation"];
+                    txtRackNumEdit.Text = dataRow["RackID"].ToString();
+                    
+                    if ((CaseDocLocation)dataRow["CaseDocLocation"] == CaseDocLocation.LawOfficer)
+                    {
+                        cmbDocAllotedBy.Enabled = true;
+                        cmbDocAllotedTo.Enabled = true;
+                        txtDocAllotedByName.Enabled = true;
+                        txtDocAllotedToName.Enabled = true;
+                        cmbDocAllotedBy.SelectedItem = (CaseDocAllottedBy)dataRow["CaseDocAllottedBy"];
+                        cmbDocAllotedTo.SelectedItem = (CaseDocAllottedTo)dataRow["CaseDocAllottedTo"];
+                        txtDocAllotedByName.Text = dataRow["CaseDocAllottedByName"].ToString();
+                        txtDocAllotedToName.Text = dataRow["CaseDocAllottedToName"].ToString();
+                    }
+                    else
+                    {
+                        cmbDocAllotedBy.Enabled = false;
+                        cmbDocAllotedTo.Enabled = false;
+                        txtDocAllotedByName.Enabled = false;
+                        txtDocAllotedToName.Enabled = false;
+                        txtDisBundleNum.Enabled = false;
+                        txtDisRackNumber.Enabled = false;
+                        cmbDocAllotedBy.SelectedItem = CaseDocAllottedBy.None;
+                        cmbDocAllotedTo.SelectedItem = CaseDocAllottedTo.None;
+                    }
+
+                    if ((CaseDocLocation)dataRow["CaseDocLocation"] == CaseDocLocation.DisposedRoom)
+                    {
+                        txtDisBundleNum.Enabled = true;
+                        txtDisRackNumber.Enabled = true;
+                        txtDisRackNumber.Text = dataRow["DisposedRacKNum"].ToString();
+                        txtDisBundleNum.Text = dataRow["DisposedBundleNum"].ToString();
+                        cmbDocAllotedBy.SelectedItem = CaseDocAllottedBy.None;
+                        cmbDocAllotedTo.SelectedItem = CaseDocAllottedTo.None;
+                    }
+                    else
+                    {
+                        txtDisBundleNum.Enabled = false;
+                        txtDisRackNumber.Enabled = false;
+                        cmbDocAllotedBy.SelectedItem = CaseDocAllottedBy.None;
+                        cmbDocAllotedTo.SelectedItem = CaseDocAllottedTo.None;
+                    }
+
+                    //txtDisRackNumber.Text = dataRow["DisposedRacKNum"].ToString();
+                    //txtDisBundleNum.Text = dataRow["DisposedBundleNum"].ToString();
+
+                    //string clubMemberId = dgv.SelectedRows[0].Cells[0].Value.ToString();
+                    //memberId = int.Parse(clubMemberId);
+
+                    //DataRow dataRow = this.clubMemberService.GetClubMemberById(memberId);
+
+                    //txt2Name.Text = dataRow["Name"].ToString();
+                    //dt2DateOfBirth.Value = Convert.ToDateTime(dataRow["DateOfBirth"]);
+                    //cmb2Occupation.SelectedItem = (Occupation)dataRow["Occupation"];
+                    //cmb2MaritalStatus.SelectedItem = (MaritalStatus)dataRow["MaritalStatus"];
+                    //cmb2HealthStatus.SelectedItem = (HealthStatus)dataRow["HealthStatus"];
+                    //txt2Salary.Text = dataRow["Salary"].ToString() == "0.0000" ? string.Empty : dataRow["Salary"].ToString();
+                    //txt2NoOfChildren.Text = dataRow["NumberOfChildren"].ToString();
                 }
             }
             catch (Exception ex)
@@ -863,6 +935,45 @@ namespace Mdu.HC.Desktop.Forms.Membership
         private void lblRackNumber_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbCaseDocLocEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbCaseDocLocEdit.SelectedValue.Equals(CaseDocLocation.LawOfficer))
+            {
+                cmbDocAllotedBy.Enabled = true;
+                cmbDocAllotedTo.Enabled = true;
+                txtDocAllotedByName.Enabled = true;
+                txtDocAllotedToName.Enabled = true;
+            }
+            else if (cmbCaseDocLocEdit.SelectedValue.Equals(CaseDocLocation.DisposedRoom))
+            {
+                cmbDocAllotedBy.Enabled = false;
+                cmbDocAllotedTo.Enabled = false;
+                txtDocAllotedByName.Enabled = false;
+                txtDocAllotedToName.Enabled = false;
+                cmbDocAllotedBy.SelectedItem = CaseDocAllottedBy.None;
+                cmbDocAllotedTo.SelectedItem = CaseDocAllottedTo.None;
+                txtDisBundleNum.Enabled = true;
+                txtDisRackNumber.Enabled = true;               
+            }
+            else
+            {
+                cmbDocAllotedBy.Enabled = false;
+                cmbDocAllotedTo.Enabled = false;
+                txtDocAllotedByName.Enabled = false;
+                txtDocAllotedToName.Enabled = false;
+                cmbDocAllotedBy.SelectedItem = CaseDocAllottedBy.None;
+                cmbDocAllotedTo.SelectedItem = CaseDocAllottedTo.None;
+                txtDisBundleNum.Enabled = false;
+                txtDisRackNumber.Enabled = false;               
+            }
+
+        }
+
+        private void Manage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

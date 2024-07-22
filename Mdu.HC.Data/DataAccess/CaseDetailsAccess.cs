@@ -48,7 +48,7 @@ namespace Mdu.HC.Data.DataAccess
         /// </summary>
         /// <param name="id">member id</param>
         /// <returns>Data row</returns>
-        public DataRow GetCaseDetailsById(int id)
+        public DataRow GetCaseDetailsById(string id)
         {
             DataTable dataTable = new DataTable();
             DataRow dataRow;

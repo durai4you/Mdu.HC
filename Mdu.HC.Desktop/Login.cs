@@ -82,5 +82,10 @@ namespace Mdu.HC.Desktop
                 Login_Click(sender, e);
             }
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

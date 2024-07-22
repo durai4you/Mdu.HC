@@ -14,6 +14,12 @@ namespace Mdu.HC.Data.Enum
     public enum CaseDocAllottedTo
     {
         /// <summary>
+        /// CaseDocAllottedTo - None
+        /// </summary>
+        [Description("None")]
+        None = 0,
+
+        /// <summary>
         /// CaseDocAllottedTo - Government Pleader
         /// </summary>
         [Description("Government Pleader")]

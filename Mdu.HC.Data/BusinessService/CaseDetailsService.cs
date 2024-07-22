@@ -33,7 +33,7 @@ namespace Mdu.HC.Data.BusinessService
         /// </summary>
         /// <param name="id">member id</param>
         /// <returns>Data row</returns>
-        public DataRow GetCaseDetailsById(int id)
+        public DataRow GetCaseDetailsById(string id)
         {
             return this.memberAccess.GetCaseDetailsById(id);
         }

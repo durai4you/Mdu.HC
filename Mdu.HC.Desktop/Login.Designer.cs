@@ -106,7 +106,7 @@
             this.MinimizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Social club - Login";
+            this.Text = "Madurai  HC - Login";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);

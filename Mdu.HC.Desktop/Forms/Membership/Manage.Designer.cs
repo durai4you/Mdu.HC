@@ -663,7 +663,7 @@
             this.tabSearchManage.Padding = new System.Windows.Forms.Padding(3);
             this.tabSearchManage.Size = new System.Drawing.Size(1308, 698);
             this.tabSearchManage.TabIndex = 1;
-            this.tabSearchManage.Text = "Search / Manage Members";
+            this.tabSearchManage.Text = "Search / Manage Case Details";
             // 
             // label30
             // 

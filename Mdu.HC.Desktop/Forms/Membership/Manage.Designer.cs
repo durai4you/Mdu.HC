@@ -350,7 +350,7 @@
             this.txtRackNumber.MaxLength = 8;
             this.txtRackNumber.Name = "txtRackNumber";
             this.txtRackNumber.Size = new System.Drawing.Size(232, 21);
-            this.txtRackNumber.TabIndex = 33;
+            this.txtRackNumber.TabIndex = 4;
             this.txtRackNumber.TextChanged += new System.EventHandler(this.txtRackNumber_TextChanged);
             this.txtRackNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRackNumber_KeyPress);
             // 
@@ -371,7 +371,7 @@
             this.cmbCaseStatus.Location = new System.Drawing.Point(106, 94);
             this.cmbCaseStatus.Name = "cmbCaseStatus";
             this.cmbCaseStatus.Size = new System.Drawing.Size(234, 23);
-            this.cmbCaseStatus.TabIndex = 32;
+            this.cmbCaseStatus.TabIndex = 3;
             // 
             // lblOccupation
             // 
@@ -434,7 +434,7 @@
             this.btnRegisterCaseDetail.Location = new System.Drawing.Point(227, 182);
             this.btnRegisterCaseDetail.Name = "btnRegisterCaseDetail";
             this.btnRegisterCaseDetail.Size = new System.Drawing.Size(115, 48);
-            this.btnRegisterCaseDetail.TabIndex = 34;
+            this.btnRegisterCaseDetail.TabIndex = 5;
             this.btnRegisterCaseDetail.Text = "Register Case Record";
             this.btnRegisterCaseDetail.UseVisualStyleBackColor = true;
             this.btnRegisterCaseDetail.Click += new System.EventHandler(this.btnRegisterCaseDetail_Click);
@@ -460,7 +460,7 @@
             this.cmbCaseType.Location = new System.Drawing.Point(108, 54);
             this.cmbCaseType.Name = "cmbCaseType";
             this.cmbCaseType.Size = new System.Drawing.Size(234, 23);
-            this.cmbCaseType.TabIndex = 31;
+            this.cmbCaseType.TabIndex = 2;
             // 
             // lblHealthStatus
             // 
@@ -498,7 +498,7 @@
             this.txtCaseID.MaxLength = 20;
             this.txtCaseID.Name = "txtCaseID";
             this.txtCaseID.Size = new System.Drawing.Size(234, 21);
-            this.txtCaseID.TabIndex = 25;
+            this.txtCaseID.TabIndex = 1;
             // 
             // txtSalary
             // 
@@ -694,7 +694,7 @@
             this.cmbDocAllotedBy.Location = new System.Drawing.Point(885, 402);
             this.cmbDocAllotedBy.Name = "cmbDocAllotedBy";
             this.cmbDocAllotedBy.Size = new System.Drawing.Size(234, 23);
-            this.cmbDocAllotedBy.TabIndex = 69;
+            this.cmbDocAllotedBy.TabIndex = 16;
             // 
             // txtDisBundleNum
             // 
@@ -703,7 +703,7 @@
             this.txtDisBundleNum.MaxLength = 8;
             this.txtDisBundleNum.Name = "txtDisBundleNum";
             this.txtDisBundleNum.Size = new System.Drawing.Size(234, 21);
-            this.txtDisBundleNum.TabIndex = 68;
+            this.txtDisBundleNum.TabIndex = 19;
             this.txtDisBundleNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDisBundleNum_KeyPress);
             // 
             // txtDisRackNumber
@@ -713,7 +713,7 @@
             this.txtDisRackNumber.MaxLength = 8;
             this.txtDisRackNumber.Name = "txtDisRackNumber";
             this.txtDisRackNumber.Size = new System.Drawing.Size(234, 21);
-            this.txtDisRackNumber.TabIndex = 67;
+            this.txtDisRackNumber.TabIndex = 18;
             this.txtDisRackNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDisBundleNum_KeyPress);
             // 
             // txtDocAllotedByName
@@ -723,7 +723,7 @@
             this.txtDocAllotedByName.MaxLength = 25;
             this.txtDocAllotedByName.Name = "txtDocAllotedByName";
             this.txtDocAllotedByName.Size = new System.Drawing.Size(234, 21);
-            this.txtDocAllotedByName.TabIndex = 66;
+            this.txtDocAllotedByName.TabIndex = 17;
             // 
             // txtDocAllotedToName
             // 
@@ -732,7 +732,7 @@
             this.txtDocAllotedToName.MaxLength = 25;
             this.txtDocAllotedToName.Name = "txtDocAllotedToName";
             this.txtDocAllotedToName.Size = new System.Drawing.Size(234, 21);
-            this.txtDocAllotedToName.TabIndex = 65;
+            this.txtDocAllotedToName.TabIndex = 15;
             // 
             // cmbDocAllotedTo
             // 
@@ -741,7 +741,7 @@
             this.cmbDocAllotedTo.Location = new System.Drawing.Point(885, 321);
             this.cmbDocAllotedTo.Name = "cmbDocAllotedTo";
             this.cmbDocAllotedTo.Size = new System.Drawing.Size(234, 23);
-            this.cmbDocAllotedTo.TabIndex = 64;
+            this.cmbDocAllotedTo.TabIndex = 14;
             // 
             // label31
             // 
@@ -901,7 +901,7 @@
             this.txtRackNumEdit.MaxLength = 8;
             this.txtRackNumEdit.Name = "txtRackNumEdit";
             this.txtRackNumEdit.Size = new System.Drawing.Size(234, 21);
-            this.txtRackNumEdit.TabIndex = 48;
+            this.txtRackNumEdit.TabIndex = 13;
             this.txtRackNumEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDisBundleNum_KeyPress);
             // 
             // cmbCaseDocLocEdit
@@ -911,7 +911,7 @@
             this.cmbCaseDocLocEdit.Location = new System.Drawing.Point(885, 244);
             this.cmbCaseDocLocEdit.Name = "cmbCaseDocLocEdit";
             this.cmbCaseDocLocEdit.Size = new System.Drawing.Size(234, 23);
-            this.cmbCaseDocLocEdit.TabIndex = 47;
+            this.cmbCaseDocLocEdit.TabIndex = 12;
             this.cmbCaseDocLocEdit.SelectedIndexChanged += new System.EventHandler(this.cmbCaseDocLocEdit_SelectedIndexChanged);
             // 
             // label16
@@ -930,7 +930,7 @@
             this.cmbCaseTypeEdit.Location = new System.Drawing.Point(885, 204);
             this.cmbCaseTypeEdit.Name = "cmbCaseTypeEdit";
             this.cmbCaseTypeEdit.Size = new System.Drawing.Size(234, 23);
-            this.cmbCaseTypeEdit.TabIndex = 46;
+            this.cmbCaseTypeEdit.TabIndex = 11;
             // 
             // label17
             // 
@@ -948,7 +948,7 @@
             this.txtCaseIDEdit.Location = new System.Drawing.Point(885, 166);
             this.txtCaseIDEdit.Name = "txtCaseIDEdit";
             this.txtCaseIDEdit.Size = new System.Drawing.Size(234, 21);
-            this.txtCaseIDEdit.TabIndex = 44;
+            this.txtCaseIDEdit.TabIndex = 10;
             // 
             // label18
             // 
@@ -1167,7 +1167,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(885, 550);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(84, 27);
-            this.btnUpdate.TabIndex = 10;
+            this.btnUpdate.TabIndex = 20;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -1187,7 +1187,7 @@
             this.btnPrintPreview.Location = new System.Drawing.Point(390, 126);
             this.btnPrintPreview.Name = "btnPrintPreview";
             this.btnPrintPreview.Size = new System.Drawing.Size(100, 28);
-            this.btnPrintPreview.TabIndex = 8;
+            this.btnPrintPreview.TabIndex = 21;
             this.btnPrintPreview.Text = "Print Preview";
             this.btnPrintPreview.UseVisualStyleBackColor = true;
             this.btnPrintPreview.Click += new System.EventHandler(this.PrintPreview_Click);
@@ -1197,7 +1197,7 @@
             this.btnExport.Location = new System.Drawing.Point(602, 126);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(100, 28);
-            this.btnExport.TabIndex = 6;
+            this.btnExport.TabIndex = 23;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.Export_Click);
@@ -1207,7 +1207,7 @@
             this.btnPrint.Location = new System.Drawing.Point(496, 126);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(100, 28);
-            this.btnPrint.TabIndex = 5;
+            this.btnPrint.TabIndex = 22;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.Print_Click);
@@ -1246,7 +1246,7 @@
             this.txtCaseIDSearch.Location = new System.Drawing.Point(83, 34);
             this.txtCaseIDSearch.Name = "txtCaseIDSearch";
             this.txtCaseIDSearch.Size = new System.Drawing.Size(234, 21);
-            this.txtCaseIDSearch.TabIndex = 46;
+            this.txtCaseIDSearch.TabIndex = 6;
             // 
             // label32
             // 
@@ -1275,7 +1275,7 @@
             this.btnRefresh.Location = new System.Drawing.Point(479, 33);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(100, 28);
-            this.btnRefresh.TabIndex = 9;
+            this.btnRefresh.TabIndex = 8;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.Refresh_Click);
@@ -1285,7 +1285,7 @@
             this.btnSearch.Location = new System.Drawing.Point(364, 33);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(100, 28);
-            this.btnSearch.TabIndex = 8;
+            this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.Search_Click);
@@ -1349,7 +1349,7 @@
             this.dataGridViewMembers.ReadOnly = true;
             this.dataGridViewMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewMembers.Size = new System.Drawing.Size(699, 411);
-            this.dataGridViewMembers.TabIndex = 3;
+            this.dataGridViewMembers.TabIndex = 9;
             this.dataGridViewMembers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridView_CellFormatting);
             this.dataGridViewMembers.SelectionChanged += new System.EventHandler(this.dataGridViewMembers_SelectionChanged);
             // 
